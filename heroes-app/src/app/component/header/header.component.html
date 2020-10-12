@@ -1,0 +1,19 @@
+<div class="header-container">
+  <p id="title-header">Fabrit Heroes</p>
+  <div class="user-detail">
+    <div class="user-image">
+      <a (click)="showModal(userProfileModal)">
+        <img class="user-image" [src]="currentUser?.avatarPath" alt="Avatar" />
+      </a>
+    </div>
+    <div class="email-container">
+      {{ currentUser.username }}
+    </div>
+    <div>
+      <button class="btn-base logout-btn" (click)="logout()">LOGOUT</button>
+    </div>
+  </div>
+  <ng-template #userProfileModal>
+    <app-user-profile-modal (close)="closeModal($event)"></app-user-profile-modal>
+  </ng-template>
+</div>

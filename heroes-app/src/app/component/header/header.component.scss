@@ -1,0 +1,79 @@
+@import '../../../styles/variables.scss';
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+  padding: 25px;
+  background-color: $main-theme-blue;   
+  color: white;
+}
+
+.email-container {
+  padding: 10px;
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top:15px;
+}
+
+.user-detail > * {
+  margin: 0px 0px 20px 0px;
+}
+
+.user-image {
+  border-radius: 50px;
+  border-color: black;
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+}
+
+.logout-btn {
+  width: fit-content;
+  padding: 10px;
+  background: $main-theme-blue;
+  overflow: hidden;
+  border: none;
+  transition-duration: 2s;
+}
+
+.logout-btn:hover {
+  box-shadow: inset 7px 7px 14px #1d5a9e, inset -7px -7px 14px #277ad6;
+}
+
+#title-header {
+  flex-shrink: inherit;
+  font-size: 30px;
+  padding: 5px 10px;
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 730px) {
+  .header-container .email-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .logout-btn {
+    display: none;
+  }
+}
+
+.modal-content {
+  max-width: 500px;
+}
+
+// @media screen and (max-width: 360px) {
+// #title-header {
+//     display: none ;
+//   }
+// }

@@ -1,0 +1,15 @@
+@import '../../../styles/variables.scss';
+
+.account-validation-container {
+  background-color: white;
+  height: 100vh;
+  padding: 30px;
+}
+
+.account-validation-body {
+  background-color: whitesmoke;
+  padding: 40px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

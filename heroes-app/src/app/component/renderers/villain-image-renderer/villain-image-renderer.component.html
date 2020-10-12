@@ -1,0 +1,6 @@
+<div>
+    <input #file class="register-input" type="file" accept="image/*" placeholder="Choose file" (change)="uploadFile(file.files, $event)">
+    <a (click)="file.click()">
+        <img [src]="this.getImagePath()" alt="villain picture" class="villain-image">
+    </a>
+</div>

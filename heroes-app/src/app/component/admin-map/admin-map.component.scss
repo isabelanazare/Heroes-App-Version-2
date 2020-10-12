@@ -1,0 +1,131 @@
+@import "../../../styles/variables.scss";
+.component-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.side-menu-heroes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: center;
+    width: 20vw;
+}
+
+.card__side-menu {
+    width: 100%;
+}
+
+.card__holder {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.card__location-popup {
+    width: 100px;
+    height: 200px;
+    background-color: red;
+    border-radius: 5px;
+}
+
+#btn-battle {
+    background-color: yellow;
+}
+
+.hero-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.cardAddress {
+    text-align: center;
+}
+
+.propAddress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-holder {
+    text-align: center;
+    .img-hero {
+        height: 65px;
+        width: 65px;
+        background-color: white;
+        border-radius: 50%;
+        margin-top: 2px;
+    }
+}
+
+agm-map {
+    height: 100%;
+    width: 70vw;
+}
+
+.card__hero {
+    color: blue;
+}
+
+.card__villain {
+    color: red;
+}
+
+* {
+    a {
+        text-decoration: none;
+    }
+}
+
+h5 {
+    text-align: center;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    &__image-popup {
+        width: 50px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &__info-container {
+        &__info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        overflow: auto;
+    }
+    &__battle-btn {
+        text-align: center;
+        background-color: $battle-btn-color;
+        margin-top: 15px;
+    }
+    &__travel-btn {
+        text-align: center;
+        margin-top: 15px;
+        background-color: $travel-btn-color;
+    }
+    &__bem-btn {
+        text-align: center;
+        background-color: $bem-btn-color;
+        margin-top: 15px;
+    }
+}

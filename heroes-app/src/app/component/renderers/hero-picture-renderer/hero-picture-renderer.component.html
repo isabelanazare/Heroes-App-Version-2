@@ -1,0 +1,7 @@
+<div>
+    <input #file class="register-input" type="file" accept="image/*" placeholder="Choose file"
+        (change)="uploadFile(file.files, $event)">
+    <a (click)="file.click()">
+        <img class="hero-image" [src]="params?.value" alt="Avatar">
+    </a>
+</div>

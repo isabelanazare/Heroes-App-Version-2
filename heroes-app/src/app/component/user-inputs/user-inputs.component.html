@@ -1,0 +1,39 @@
+<div class="flex-container-details" *ngIf="hero">
+    <div class="input-container">
+        <div>
+            <label>Type: </label>
+            <input readonly value={{hero.role}}>
+        </div>
+        <div>
+            <label>Name: </label>
+            <input type="text" [(ngModel)]="hero.name" [disabled]="!showEditButtons">
+        </div>
+        <div>
+            <label>Birthday: </label>
+            <input type="date" [(ngModel)]="hero.birthday" [disabled]="!showEditButtons">
+        </div>
+        <div>
+            <label>Overall strength: </label>
+            <input readonly value={{hero.overallStrength}}>
+        </div>
+        <div>
+            <label>Main Power: </label>
+            <input *ngIf="hero.mainPower" readonly value={{hero.mainPower.name}}>
+        </div>
+    </div>
+    <div>
+        <input #file class="register-input" type="file" accept="image/*" placeholder="Choose file" (change)="uploadFile(file.files, $event)" [attr.disabled]="!showEditButtons ? '' : null">
+        <a (click)="file.click()">
+            <div class="photo-container">
+                <img class="profile-picture" *ngIf="hero.avatarPath" [src]="hero.avatarPath">
+            </div>
+        </a>
+    </div>
+</div>
+
+<button *ngIf="!showEditButtons" (click)="enterEditMode()" class="btn btn-info" id="enterEditMode">Edit</button>
+
+<div class="bottom-buttons" *ngIf="showEditButtons">
+    <button (click)="saveDetails()" class="btn btn-success" id="saveButton">Save</button>
+    <button (click)="cancel()" class="btn btn-warning" id="cancelButton">Cancel</button>
+</div>

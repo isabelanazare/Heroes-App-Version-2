@@ -1,0 +1,17 @@
+<div class="ud-body">
+  <div class="message-box">
+    <ul>
+      <li *ngFor="let mObj of messages" [ngClass]="mObj.user === message.user ? 'container' : 'container darker'">
+        <img src="{{mObj.avatarPath}}" alt="Avatar" style="width:100%;">
+
+        <div class="message-username">{{mObj.user}}</div>
+        {{mObj.text}}
+        <p><span class="hour">{{mObj.hour}}</span></p>
+      </li>
+    </ul>
+  </div>
+  <div class="ud-flex-row">
+    <input type="text" placeholder="Type message here" class="message-input" [(ngModel)]="message.text" />
+    <button class="send-btn" (click)="send()">SEND</button>
+  </div>
+</div>

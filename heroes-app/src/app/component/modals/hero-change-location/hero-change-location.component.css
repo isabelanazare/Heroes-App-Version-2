@@ -1,0 +1,25 @@
+.map {
+    height: 100%;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    align-items: center;
+}
+
+.location-search-wrapper {
+    height: 25px;
+    width: 100%;
+}
+
+.map-wrapper {
+    margin-top: 50px;
+    height: 400px;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+}

@@ -1,0 +1,22 @@
+.holder-chart {
+  display: block;
+}
+
+.container {
+  max-width: 100vw;
+  padding: 0px;
+}
+
+.wrapper-charts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.wrapper-charts > * {
+  flex-grow: 1;
+  min-width: 20vw;
+  width: 40vw;
+}

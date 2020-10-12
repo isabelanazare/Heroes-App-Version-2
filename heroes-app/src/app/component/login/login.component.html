@@ -1,0 +1,46 @@
+<div class="login-container">
+  <div class="login-transbox">
+    <div>
+      <div class="login-title">Login</div>
+      <div class="input-container">
+        <div>
+          <input class="input-field form-control" id="username-input" type="text" [(ngModel)]="currentUser.username"
+            placeholder="Username" autocomplete="off" />
+        </div>
+        <div>
+          <input class="input-field form-control" type="password" [(ngModel)]="currentUser.password"
+            placeholder="Password" autocomplete="off" />
+        </div>
+      </div>
+      <div class="button-holder">
+        <div class="login-button-container">
+        <button class="btn btn-primary" id="login-btn" (click)="onLogin()">
+          Login
+        </button>
+      </div>
+    </div>
+      <div class="login-register-container">
+        <div>
+          <p>Don't have an account?</p>
+        </div>
+        <div class="login-links">
+          <a (click)="showModal(registerModal)">
+            <pre> Sign up!</pre></a>
+        </div>
+      </div>
+      <div class="login-links">
+        <a (click)="showModal(resetModal)">
+          <pre>Forgot Password?</pre></a>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
+  <ng-template #registerModal>
+    <app-register-modal (close)="closeModal($event)"></app-register-modal>
+  </ng-template>
+
+  <ng-template #resetModal>
+    <app-reset-password-modal (close)="closeModal($event)"></app-reset-password-modal>
+  </ng-template>
+</div>

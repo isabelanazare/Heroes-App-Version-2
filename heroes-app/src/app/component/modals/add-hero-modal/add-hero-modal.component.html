@@ -1,0 +1,67 @@
+<div class="modal-header header-modal-container">
+    <h4 class="modal-title pull-left">New hero</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div class="hero-container">
+        <div class="input-container">
+            <div class="field-wrapper">
+                <label>Name</label><span class="required-field">*</span>
+                <input type="text" class="hero-modal-input" [(ngModel)]="hero.name" required="true" />
+            </div>
+        </div>
+
+        <div class="input-container">
+            <div class="field-wrapper">
+                <label>Email</label><span class="required-field">*</span>
+                <input type="text" class="hero-modal-input" [(ngModel)]="hero.email" />
+            </div>
+        </div>
+
+        <div>
+            <div class="field-wrapper">
+                <label>Type</label><span class="required-field">*</span>
+                <select (change)="getSelectedType($event)" class="hero-modal-dropdown" required="true">
+                    <option class="select-hint">{{ typeSelectionHint }}</option>
+                    <option *ngFor="let type of heroTypes" value="{{ type.id }}">
+                        {{ type.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="field-wrapper">
+                <label>Powers</label><span class="required-field">*</span>
+                <ejs-multiselect required="true" [dataSource]="powers" [fields]="localFieldsPowers"
+                    [placeholder]="placeholderPowers" [(ngModel)]="powersIds"></ejs-multiselect>
+            </div>
+        </div>
+        <div>
+            <label>Main Power</label><span class="required-field">*</span>
+            <select (change)="getSelectedMainPower($event)" class="hero-modal-dropdown" required="true">
+                <option class="select-hint">
+                    Choose a main power from the list of selected powers
+                </option>
+                <option *ngFor="let powerId of powersIds" value="{{ powerId }}">
+                    {{ getPowerWithId(powerId).name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <div class="field-wrapper">
+                <label>Allies</label><span class="required-field">*</span>
+                <ejs-multiselect required="true" [dataSource]="allies" [fields]="localFieldsAllies"
+                [placeholder]="placeholderAllies" [(ngModel)]="alliesIds"></ejs-multiselect>
+       
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default save-button-modal" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-default  cancel-button-modal" (click)="onCancel()">Cancel</button>
+</div>

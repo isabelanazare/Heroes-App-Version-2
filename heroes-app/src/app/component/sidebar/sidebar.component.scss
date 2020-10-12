@@ -1,0 +1,95 @@
+@import "../../../styles/variables.scss";
+.sidenav-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: $main-theme-blue;
+    height: 100vh;
+}
+
+.active {
+    background: $active-icon-link-color;
+}
+
+.a-router {
+    text-decoration: none;
+    color: white;
+    padding: 10px 0px 15px 30px;
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    background-color: $link-color;
+     :hover {
+        opacity: 0.8;
+    }
+}
+
+.enable-side-menu {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+}
+
+.icon-holder {
+    display: inline-block;
+    flex-direction: column;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons-link {
+    width: 85%;
+    fill: white;
+     :hover {
+        background: 0.9;
+    }
+    margin: 0px 4px 20px 4px;
+    opacity: 0.7;
+}
+
+#log-out-icon {
+    display: none;
+}
+
+@media screen and (max-width: 940px) {
+    .sidenav-container a {
+        display: none;
+    }
+    .icon-holder {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    #log-out-icon {
+        display: inline;
+    }
+}
+
+.a-router.is-active {
+    background-color: #849bdc;
+}
+
+.icons-link.is-active {
+    background-color: #7db6f7;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+#wrapper-admin-links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: $main-theme-blue;
+    height: 100vh;
+}
+
+#wrapper-regular-links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: $main-theme-blue;
+    height: 100vh;
+}

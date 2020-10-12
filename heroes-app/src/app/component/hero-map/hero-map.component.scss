@@ -1,0 +1,220 @@
+@import "../../../styles/variables.scss";
+.component-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: auto;
+    height: 80vh;
+}
+
+.side-menu-heroes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: center;
+    width: 20vw;
+}
+
+.card__side-menu {
+    width: 100%;
+}
+
+.card__holder {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.card__side-menu {
+    a {
+        text-decoration: none;
+    }
+    .card__hero {
+        color: blue;
+    }
+    .card__hero {
+        color: red;
+    }
+}
+
+.card__location-popup {
+    width: 100px;
+    height: 200px;
+    background-color: $red;
+    border-radius: 5px;
+}
+
+.hero-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.card__address {
+    text-align: center;
+}
+
+.image-holder {
+    text-align: center;
+    .img-hero {
+        height: 65px;
+        width: 65px;
+        background-color: white;
+        border-radius: 50%;
+        margin-top: 2px;
+    }
+}
+
+agm-map {
+    height: 100%;
+    width: 70vw;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    &__image-popup {
+        width: 50px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &__info-container {
+        &__info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        overflow: auto;
+    }
+    &__battle-btn {
+        text-align: center;
+        background-color: $battle-btn-color;
+        margin-top: 15px;
+    }
+    &__travel-btn {
+        text-align: center;
+        margin-top: 15px;
+        background-color: $travel-btn-color;
+    }
+    &__bem-btn {
+        text-align: center;
+        background-color: $bem-btn-color;
+        margin-top: 15px;
+    }
+}
+
+#menu-spacer {
+    width: 33%;
+}
+
+.modal-body {
+    background-image: url(../../../assets/image/battle-wait.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: contain;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+    height: 350px;
+    &__hero-container {
+        margin: auto auto auto auto;
+        width: 32%;
+        &__list {
+            list-style-type: none;
+            overflow: auto;
+            padding-left: 0;
+            text-align: center;
+             :hover {
+                opacity: 0.5;
+            }
+            &__item {
+                background-color: blue;
+                color: white;
+                width: 100%;
+            }
+        }
+    }
+    &__villain-container {
+        margin: auto auto auto auto;
+        width: 33%;
+        &__list {
+            list-style-type: none;
+            overflow: auto;
+            text-align: center;
+            padding-left: 0;
+             :hover {
+                opacity: 0.5;
+            }
+            &__item {
+                background-color: red;
+                color: white;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.modal {
+    width: 40vw;
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin: auto;
+    display: none;
+    overflow: auto;
+    height: 500px;
+}
+
+h5 {
+    text-align: center;
+}
+
+.div-base-strength {
+    margin: 0;
+    position: absolute;
+    &-heroes {
+        background-color: blue;
+        color: white;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+    }
+    &-villains {
+        background-color: red;
+        color: white;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+    }
+}
+
+.chances-div {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+}
+
+.chances-span {
+    background-color: yellow;
+    color: black;
+}

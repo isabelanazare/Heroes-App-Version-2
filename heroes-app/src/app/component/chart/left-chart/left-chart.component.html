@@ -1,0 +1,8 @@
+<div class="chart-holder">
+  <h2>Heroes powers</h2>
+  <div *ngIf="!isLoading">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>

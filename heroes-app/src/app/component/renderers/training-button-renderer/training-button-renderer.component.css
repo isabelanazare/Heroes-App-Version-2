@@ -1,0 +1,13 @@
+.btn-small {
+    text-align: start;
+    font-size: smaller;
+    height: 100%;
+    width: 100%;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.btn {
+    height: 100%;
+    width: 100%;
+}

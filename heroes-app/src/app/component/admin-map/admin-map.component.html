@@ -1,0 +1,66 @@
+<div class="component-wrapper">
+    <div class="map-wrapper">
+        <agm-map [zoom]="zoom" [fullscreenControl]="true" [latitude]="latitude" [longitude]="longitude">
+            <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+                <div class="agm-marker-wrapper" *ngFor="let hero of entities" [ngSwitch]="hero.isBadGuy">
+                    <agm-marker *ngSwitchCase="0" [latitude]="hero.latitude" [longitude]="hero.longitude" [animation]="'BOUNCE'" [iconUrl]="icon">
+                        <agm-snazzy-info-window [isOpen]="isInfoWindowOpen(hero.id)" [showCloseButton]="false" [maxWidth]="300" [maxHeight]="400" [closeWhenOthersOpen]="true">
+                            <ng-template>
+                                <div class="popup">
+                                    <img class="popup__image-popup" src="{{hero.avatarPath}}">
+                                    <div class="popup__info-container" style="text-align: center;">
+                                        <div class="popup__info-container__info">
+                                            <label>Name: {{hero.name}}</label>
+                                            <label>Type: {{displayAffiliation(hero)}}</label>
+                                            <label>Strength: {{hero.overallStrength}}</label>
+                                            <label>Location: </label>
+                                            <label>Latitude: {{hero.latitude | number: '1.2-2'}}</label>
+                                            <label>Longitude: {{hero.longitude | number: '1.2-2'}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </agm-snazzy-info-window>
+                    </agm-marker>
+
+                    <agm-marker *ngSwitchCase="1" [latitude]="hero.latitude" [longitude]="hero.longitude" [animation]="'BOUNCE'" [iconUrl]="iconVillain">
+                        <agm-snazzy-info-window [isOpen]="isInfoWindowOpen(hero.id)" [showCloseButton]="false" [maxWidth]="300" [maxHeight]="400" [closeWhenOthersOpen]="true">
+                            <ng-template>
+                                <div class="popup">
+                                    <img class="popup__image-popup" src="{{hero.avatarPath}}">
+                                    <div class="popup__info-container" style="text-align: center;">
+                                        <div class="popup__info-container__info">
+                                            <label>Name: {{hero.name}}</label>
+                                            <label>Type: {{displayAffiliation(hero)}}</label>
+                                            <label>Strength: {{hero.overallStrength}}</label>
+                                            <label>Location: </label>
+                                            <label>Latitude: {{hero.latitude | number: '1.2-2'}}</label>
+                                            <label>Longitude: {{hero.longitude | number: '1.2-2'}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </agm-snazzy-info-window>
+                    </agm-marker>
+
+
+                </div>
+            </agm-marker-cluster>
+        </agm-map>
+    </div>
+    <div class="side-menu-heroes">
+        <div class="card__holder">
+            <div class="card__side-menu" *ngFor="let hero of entities">
+                <a href="javascript:;" class="card" (click)="seeLocationHero_Villain(hero);openWindowFromSideMenu(hero)">
+                    <div class="image-holder">
+                        <img class="img-hero" src="{{hero.avatarPath}}" alt="hero-avatar" [ngClass]="{card__hero: !hero.isBadGuy, card__villain: hero.isBadGuy}">
+                    </div>
+                    <h5 [ngClass]="{card__hero: !hero.isBadGuy, card__villain: hero.isBadGuy}">{{hero.name}}</h5>
+                    <div class="cardAddress" [ngClass]="{card__hero: !hero.isBadGuy, card__villain: hero.isBadGuy}">
+                        ({{hero.latitude.toFixed(2)}}, {{hero.longitude.toFixed(2)}})<br>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

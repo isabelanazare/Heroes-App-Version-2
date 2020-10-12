@@ -1,0 +1,33 @@
+<div class="modal-header header-modal-container">
+    <h4 class="modal-title pull-left">Edit power with id {{powerId}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+  <span aria-hidden="true">×</span>
+</button>
+</div>
+
+
+<div class="modal-body modal-container">
+    <div class="name-container"> <label>Name</label>
+        <input type="text" class="power-modal-input power-name" [(ngModel)]="power.name" readonly>
+    </div>
+    <div flexLayout="column">
+        <div fxFlex="70%"><label>Strength</label><span class="required-field">*</span>
+            <input type="range" min="1" max="200" class="power-modal-input power-strength" [(ngModel)]="power.strength">
+        </div>
+        <div fxFlex="30%" class="strength-range">Value: {{power.strength}}</div>
+    </div>
+    <div>
+        <label>Element</label><span class="required-field">*</span>
+        <select (change)="getSelectedElement($event)" class="power-modal-dropdown" required="true">
+          <option value={{currentElement.id}}>{{currentElement.name}}</option>
+          <option *ngFor="let element of elements" value={{element.id}}>
+              {{element.name}}
+          </option>
+      </select>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default save-button-modal" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-default cancel-button-modal" (click)="onCancel()">Cancel</button>
+</div>

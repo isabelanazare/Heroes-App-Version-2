@@ -1,0 +1,88 @@
+<div class="modal-header header-modal-container">
+  <h4 class="modal-title pull-left">Your profile</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+<div class="modal-body modal-container">
+  <div class="profile-container">
+    <div>
+      <div *ngIf="!wantSecurityChanges" class="wrapper-user-data">
+        <div>
+          <label> <span>Profile Picture</span></label><span class="required-field">*</span>
+          <input #file class="register-input" type="file" accept="image/*" placeholder="Choose file"
+            (change)="uploadFile(file.files)" />
+          <button type="button" class="btn btn-success register-button" (click)="file.click()">
+            Upload File
+          </button>
+          <span class="upload" *ngIf="message">
+            {{ message }}
+          </span>
+        </div>
+        <div>
+          <label for="name" class="control-label">Full Name</label><span class="required-field">*</span>
+          <input  required name="name" #name="ngModel" class="form-control register-name register-label"
+            type="text" [(ngModel)]="newUser.fullName" />
+          <span class="help-block error" *ngIf="name.invalid && name.touched">Name is required</span>
+        </div>
+        <div>
+          <label for="email" class="control-label">Email</label>
+          <input  name="email" disabled class="form-control register-email register-label" type="text"
+            [(ngModel)]="newUser.username" />
+        </div>
+        <div>
+          <label for="age" class="control-label">Age</label><span class="required-field">*</span>
+          <input  required number name="age" #age="ngModel" class="form-control register-email register-label"
+            type="number" [(ngModel)]="newUser.age" />
+          <span class="help-block error" *ngIf="age.errors?.required && age.touched">Age is required</span>
+          <span class="help-block error" *ngIf="age.errors?.email && age.touched">Age is invalid</span>
+        </div>
+      </div>
+      <div *ngIf="wantSecurityChanges">
+        <h4>Change your password</h4>
+        <div>
+          <label class="control-label">Actual Password</label><span class="required-field">*</span>
+          <input required name="passwordModel" #passwordModel="ngModel"
+            class="form-control register-password register-label" type="password"
+            [(ngModel)]="resetPasswordDto.actualPassword" />
+          <span class="help-block error" *ngIf="passwordModel.errors?.required && passwordModel.touched">Password is
+            required</span>
+        </div>
+        <div>
+          <label for="newPassword" class="control-label">New Password</label><span class="required-field">*</span>
+          <input  required name="newPassword" #newPassword="ngModel"
+            class="form-control register-confirm-password register-label" type="password"
+            [(ngModel)]="resetPasswordDto.newPassword" />
+          <span class="help-block error" *ngIf="newPassword.errors?.required && newPassword.touched">Password is
+            required</span>
+        </div>
+        <div>
+          <label for="confirmPassword" class="control-label">Confirm Password</label><span
+            class="required-field">*</span>
+          <input required name="confirmPassword" #confirmPassword="ngModel"
+            class="form-control register-confirm-password register-label" type="password"
+            [(ngModel)]="resetPasswordDto.newConfirmPassword" />
+          <span class="help-block error" *ngIf="confirmPassword.errors?.required && confirmPassword.touched">Password is
+            required</span>
+        </div>
+      </div>
+    </div>
+    <div class="user-security-container" *ngIf="!wantSecurityChanges">
+      <div>
+        <img class="profile-image" [src]="userAvatar" alt="Avatar" />
+      </div>
+
+      <div>
+        <p class="change-password-link" (click)="displayChangePasswordScreen()">
+          Change your password
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default save-button-modal" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-default cancel-button-modal" (click)="onClose()">Cancel</button>
+</div>

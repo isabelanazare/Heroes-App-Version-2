@@ -1,0 +1,75 @@
+@import '../../../styles/variables.scss';
+
+.login-links pre {
+  display: flex;
+  justify-content: center;
+  color: $main-theme-blue;
+  text-decoration-line: none;
+  color: $link-color;
+}
+
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.login-container {
+  background-color: #e1e1ea;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.login-transbox {
+  border: 1px solid black;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  height: 400px;
+  font-family: serif;
+  width: 400px;
+  font-weight: 700;
+  margin: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.login-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  font-size: 35px;
+  margin-bottom: 40px;
+  color: black;
+}
+
+.button-holder {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container > * {
+  margin: 0px 0px 5px;
+}
+
+.login-register-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-weight: normal;
+}
+
+* {
+  font-family: 'Segoe UI'
+}

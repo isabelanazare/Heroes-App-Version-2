@@ -1,0 +1,8 @@
+<div class="hero-tier-div">Your tier: {{heroTier}}</div>
+<div *ngFor="let tierBadge of tierBadges" class="tier-container">
+    <img class="tier-img" src={{tierBadge.img}}>
+    <span class="tier-x">X</span>
+    <span class="badges-counter">
+        {{tierBadge.count}}
+    </span>
+</div>

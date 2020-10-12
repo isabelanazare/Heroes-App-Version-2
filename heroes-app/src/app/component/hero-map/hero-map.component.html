@@ -1,0 +1,141 @@
+<div class="component-wrapper">
+    <div class="map-wrapper">
+        <agm-map #agm [zoom]="zoom" [fullscreenControl]="true" [latitude]="latitude" [longitude]="longitude" (mapClick)="placeMarker($event);">
+            <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+                <div class="agm-marker-wrapper" *ngFor="let hero of heroes" [ngSwitch]="hero.isBadGuy">
+                    <div *ngIf="hero.id!=loggedHero.id; else isTheLoggedHero">
+                        <agm-marker *ngSwitchCase="0" [latitude]="hero.latitude" [longitude]="hero.longitude" [animation]="'BOUNCE'" [iconUrl]="icon">
+                            <agm-snazzy-info-window [isOpen]="isInfoWindowOpen(hero.id)" [showCloseButton]="false" [maxWidth]="300" [maxHeight]="400" [closeWhenOthersOpen]="true">
+                                <ng-template>
+                                    <div class="popup">
+                                        <img class="popup__image-popup" src="{{hero.avatarPath}}">
+                                        <div class="popup__info-container" style="text-align: center;">
+                                            <div class="popup__info-container__info">
+                                                <label>Name: {{hero.name}}</label>
+                                                <label>Type: {{displayAffiliation(hero)}}</label>
+                                                <label>Strength: {{hero.overallStrength}}</label>
+                                                <label>Location: </label>
+                                                <label>Latitude: {{hero.latitude | number: '1.2-2'}}</label>
+                                                <label>Longitude: {{hero.longitude | number: '1.2-2'}}</label>
+                                            </div>
+                                        </div>
+                                        <a *ngIf="hero.isBadGuy!=loggedHero.isBadGuy" class="popup__battle-btn btn btn-sm btn-round btn-gray btn-o closeInfo" (click)="createBattle(hero);">Battle</a>
+
+                                    </div>
+                                </ng-template>
+                            </agm-snazzy-info-window>
+                        </agm-marker>
+
+                        <agm-marker *ngSwitchCase="1" [latitude]="hero.latitude" [longitude]="hero.longitude" [animation]="'BOUNCE'" [iconUrl]="iconVillain">
+                            <agm-snazzy-info-window [isOpen]="isInfoWindowOpen(hero.id)" [showCloseButton]="false" [maxWidth]="300" [maxHeight]="400" [closeWhenOthersOpen]="true">
+                                <ng-template>
+                                    <div class="popup">
+                                        <img class="popup__image-popup" src="{{hero.avatarPath}}">
+                                        <div class="popup__info-container" style="text-align: center;">
+                                            <div class="popup__info-container__info">
+                                                <label>Name: {{hero.name}}</label>
+                                                <label>Type: {{displayAffiliation(hero)}}</label>
+                                                <label>Strength: {{hero.overallStrength}}</label>
+                                                <label>Location: </label>
+                                                <label>Latitude: {{hero.latitude | number: '1.2-2'}}</label>
+                                                <label>Longitude: {{hero.longitude | number: '1.2-2'}}</label>
+                                            </div>
+                                        </div>
+                                        <a *ngIf="hero.isBadGuy!=loggedHero.isBadGuy" class="popup__battle-btn btn btn-sm btn-round btn-gray btn-o closeInfo" (click)="createBattle(hero)">Battle</a>
+                                    </div>
+                                </ng-template>
+                            </agm-snazzy-info-window>
+                        </agm-marker>
+                    </div>
+
+                    <ng-template #isTheLoggedHero>
+                        <agm-marker [latitude]="loggedHero.latitude" [longitude]="loggedHero.longitude" [animation]="'BOUNCE'" [iconUrl]="iconHero">
+                        </agm-marker>
+                    </ng-template>
+                </div>
+
+                <div *ngIf="clickCounter>0">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [animation]="'BOUNCE'" [iconUrl]="iconTravel">
+                        <agm-snazzy-info-window [isOpen]="isInfoWindowOpen(loggedHeroId)" [showCloseButton]="false" [maxWidth]="300" [maxHeight]="400" [closeWhenOthersOpen]="true">
+                            <ng-template>
+                                <div class="popup">
+                                    <img class="popup__image-popup" src="../../../assets/svg/fly.svg">
+                                    <div class="popup__info-container" style="text-align: center;">
+                                        <div class="popup__info-container__info">
+                                            <label>Location:</label>
+                                            <label>Latitude: {{latitude}}</label>
+                                            <label>Longitude: {{longitude}}</label>
+                                            <label>Distance: {{travelDistance/1000 | number: '1.2-2'}} km</label>
+                                        </div>
+                                    </div>
+                                    <a class="popup__travel-btn btn btn-sm btn-round btn-gray btn-o closeInfo" (click)="travel()">Travel</a>
+                                </div>
+                            </ng-template>
+                        </agm-snazzy-info-window>
+                    </agm-marker>
+                </div>
+            </agm-marker-cluster>
+        </agm-map>
+    </div>
+
+
+
+    <div class="side-menu-heroes">
+        <div class="card__holder">
+            <div class="card__side-menu" *ngFor="let hero of heroes">
+                <div [ngClass]="{card__hero: !hero.isBadGuy, card__villain: hero.isBadGuy}">
+                    <a href="javascript:;" class="card" (click)="seeLocationHeroOrVillain(hero);openWindowFromSideMenu(hero)">
+                        <div class="image-holder">
+                            <img class="img-hero" src="{{hero.avatarPath}}" alt="hero-avatar">
+                        </div>
+                        <h2 [ngClass]="{card__hero: hero.isBadGuy, card__villain: !hero.isBadGuy}">{{hero.name}}</h2>
+                        <div class="card__address" [ngClass]="{card__hero: hero.isBadGuy, card__villain: !hero.isBadGuy}">
+                            {{hero.latitude}}<br> {{hero.longitude}}
+                            <br>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="modal-battle" class="modal fade" bsModal #createLobbyBattle="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-battle">
+    <div class="modal-header header-modal-container">
+        <h4 class="modal-title pull-left">Battle preview</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="createLobbyBattle.hide();cancelBattle()">
+    <span aria-hidden="true">×</span>
+  </button>
+    </div>
+
+
+    <div class="modal-body">
+        <div class="modal-body__hero-container">
+            <ul class="modal-body__hero-container__list">
+                <li class="modal-body__hero-container__list__item">Base Strength: {{heroesScore}}</li>
+                <li class="modal-body__hero-container__list__item" *ngFor="let hero of heroesTeam">{{hero.name}}</li>
+            </ul>
+        </div>
+        <div id="menu-spacer"></div>
+        <div class="modal-body__villain-container">
+            <ul class="modal-body__villain-container__list">
+                <li class="modal-body__villain-container__list__item">Base Strength: {{villainsScore}}</li>
+                <li class="modal-body__villain-container__list__item" *ngFor="let villain of villainsTeam">{{villain.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="chances-div">
+            <span class="chances-span">
+            Your chances for winning: {{chances}}%
+            </span>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default modal-btn-save save-button-modal" (click)="playGame()">Start Battle</button>
+        <button type="button" class="btn btn-default modal-btn-cancel cancel-button-modal" (click)="createLobbyBattle.hide();cancelBattle()">Cancel</button>
+    </div>
+
+</div>

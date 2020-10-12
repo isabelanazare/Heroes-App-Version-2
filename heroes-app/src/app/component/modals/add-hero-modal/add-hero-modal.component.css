@@ -1,0 +1,9 @@
+.field-wrapper {
+  display: block;
+}
+
+.hero-modal-dropdown {
+  padding-left: 8px;
+  width: 100%;
+  text-align-last: center;
+}

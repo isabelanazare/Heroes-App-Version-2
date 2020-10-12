@@ -1,0 +1,79 @@
+<div class="details-container">
+    <ngb-tabset [destroyOnHide]="false">
+
+        <ngb-tab title="Details">
+            <ng-template ngbTabContent *ngIf="villain">
+                <div class="flex-row-container">
+                    <div class="villain-container">
+                        <div>
+                            <label>Name</label><span class="required-field">*</span>
+                            <input type="text" class="hero-modal-input" required="true" [(ngModel)]="villain.name" name="name" #name="ngModel" *ngIf="villain.name">
+                        </div>
+                        <div>
+                            <label>Birthday</label>
+                            <input class="hero-modal-input" type="date" [(ngModel)]="villain.birthday" name="birthday required ">
+                        </div>
+                        <div>
+                            <label>Type</label><span class="required-field ">*</span>
+                            <select (change)="getSelectedType($event) " class="hero-modal-dropdown " required="true ">
+                          <option value="{{ initialHeroType.id }} ">
+                            {{ initialHeroType.name }}
+                          </option>
+                          <option *ngFor="let type of heroTypes " value="{{ type.id }} ">
+                            {{ type.name }}
+                          </option>
+              </select>
+                        </div>
+                        <div>
+                            <label>Main Power</label>
+                            <input readonly class="hero-modal-input " value={{getPowerWithId(initialMainPower.id).name}}>
+                        </div>
+                        <div>
+                            <label>Overall Strength</label>
+                            <input readonly class="hero-modal-input " value={{villain.overallStrength}}>
+                        </div>
+                        <div>
+                            <label>Allies</label><span class="required-field ">*</span>
+                            <ejs-multiselect required="true " [value]="villain.allies" [dataSource]='allies' [fields]='localFieldsAllies' [placeholder]='placeholderAllies' [(ngModel)]='alliesIds'></ejs-multiselect>
+                        </div>
+                    </div>
+                    <div class="profile-container">
+                        <img class="profile-image" src={{villain.avatarPath}}>
+
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary " id="edit-button " (click)="onSave() ">Edit</button>
+
+            </ng-template>
+
+        </ngb-tab>
+
+        <ngb-tab>
+            <ng-template ngbTabTitle>Powers</ng-template>
+            <ng-template ngbTabContent>
+
+                <app-villain-power-table [villainId]="villainId"></app-villain-power-table>
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab>
+            <ng-template ngbTabTitle>Location</ng-template>
+            <ng-template ngbTabContent>
+
+
+                <div class="flex-container ">
+                    <div class="form-group location-search-wrapper ">
+                        <input type="text " class="form-control search-input " (keydown.enter)="$event.preventDefault() " placeholder="Search Nearest Location " autocorrect="off " autocapitalize="off " spellcheck="off " type="text " #search>
+                    </div>
+                    <div class="map-wrapper " fxFlex="1 1 100% ">
+                        <agm-map *ngIf="villain " class="map " [latitude]="villain.latitude " [longitude]="villain.longitude " (mapClick)="onChoseLocation($event) " [zoom]="zoom ">
+                            <agm-marker [latitude]="villain.latitude " [longitude]="villain.longitude " [markerDraggable]="true " (dragEnd)="onChoseLocation($event) "></agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+                <button class="btn-location btn-success " (click)="saveLocation() ">Edit location</button>
+            </ng-template>
+        </ngb-tab>
+
+    </ngb-tabset>
+</div>

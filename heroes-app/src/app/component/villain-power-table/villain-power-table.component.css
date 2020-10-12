@@ -1,0 +1,17 @@
+.grid {
+    width: 100%;
+    height: 100%;
+}
+
+.grid-container {
+    margin-top: 10px;
+    width: 100%;
+    height: 75vh;
+}
+
+.button-container {
+    margin-top: 5px;
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: flex-end;
+}

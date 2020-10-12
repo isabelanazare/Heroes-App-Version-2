@@ -1,0 +1,38 @@
+<div class="modal-header header-modal-container">
+    <h4 class="modal-title pull-left">Register</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div>
+        <label for="name" class="control-label">Full Name</label> <span class="required-field">*</span>
+        <input required name="name" #name="ngModel" class="form-control register-name register-label" type="text" [(ngModel)]="newUser.fullName">
+        <span class="help-block error" *ngIf="name.invalid && name.touched">Name is required</span>
+    </div>
+    <div>
+        <label for="email" class="control-label">Email</label> <span class="required-field">*</span>
+        <input required email name="email" #email="ngModel" class="form-control register-email register-label" type="text" [(ngModel)]="newUser.username">
+        <span class="help-block error" *ngIf="email.errors?.required && email.touched">Email is required</span>
+        <span class="help-block error" *ngIf="email.errors?.email && email.touched">Email is invalid</span>
+    </div>
+
+    <div>
+        <label for="password" class="control-label">Password</label> <span class="required-field">*</span>
+        <input required name="password" #password="ngModel" class="form-control register-password register-label" type="password" [(ngModel)]="newUser.password">
+        <span class="help-block error" *ngIf="password.errors?.required && password.touched">Password is required</span>
+    </div>
+    <div>
+        <label for="confirmPassword" class="control-label">Confirm Password</label> <span class="required-field">*</span>
+        <input required name="confirmPassword" #confirmPassword="ngModel" class="form-control register-confirm-password register-label" type="password" [(ngModel)]="newUser.confirmationPassword">
+        <span class="help-block error" *ngIf="password.errors?.required && password.touched">Password is required</span>
+    </div>
+    <input type="radio" value="Hero" name="role" [ngModel]="newUser.role" (change)="changeRole($event)"> Hero
+    <input type="radio" value="Villain" name="role" [ngModel]="newUser.role" (change)="changeRole($event)"> Villain
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default save-button-modal" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-default cancel-button-modal" (click)="onCancel()">Cancel</button>
+</div>

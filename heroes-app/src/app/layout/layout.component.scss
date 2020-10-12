@@ -1,0 +1,24 @@
+.pages {
+  padding: 20px;
+  width: 85%;
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+.side-nav {
+  width: 15%;
+  app-sidebar {
+    width: 100%;
+  }
+}
+
+app-header {
+  width: 100%;
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 0px;
+}

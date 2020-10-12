@@ -1,0 +1,30 @@
+<div class="modal-header header-modal-container">
+    <h4 class="modal-title pull-left">Add new powers</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+
+<div class="modal-body modal-container">
+    <div *ngIf="powers.length; else notAvailable"> <label>Available powers:</label>
+        <div class="autocomplete-items">
+            <div *ngFor="let power of powers" [ngClass]="isSelected(power) ? 'selected-suggestion' : ''" (click)="selectSuggestion(power)">{{ power.name }}</div>
+        </div>
+
+        <label for="powers">Selected powers:</label>
+
+        <div class="user-chip" *ngFor="let power of selectedPowers">
+            {{power.name}}
+            <span (click)="deleteSelects(power)" class="delete-icon-chip">X</span>
+        </div>
+    </div>
+    <ng-template #notAvailable>
+        <span>No Power available</span>
+    </ng-template>
+</div>
+
+<div class="modal-footer">
+    <button *ngIf="powers.length" type="button" class="btn btn-default save-button-modal" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-default cancel-button-modal" (click)="onCancel()">Cancel</button>
+</div>

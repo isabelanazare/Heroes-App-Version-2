@@ -1,0 +1,30 @@
+<div *ngIf="!isLoading" class="sidenav-container" id="side-nav">
+    <div *ngIf="role==='Admin'" id="wrapper-admin-links">
+        <a class="a-router" routerLink="/home" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a class="a-router" routerLink="/home/heroes" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Heroes</a>
+        <a class="a-router" routerLink="/home/powers" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Powers</a>
+        <a class="a-router" routerLink="/home/villains" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" (click)="updateSharedService()">Villains</a>
+        <a class="a-router" routerLink="/home/admin-map" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Admin Map</a>
+    </div>
+    <div *ngIf="role==='Regular'" id="wrapper-regular-links">
+        <a class="a-router" routerLink="/home" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a class="a-router" routerLink="/home/user-details" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Account</a>
+        <a class="a-router" routerLink="/home/chat" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Chat</a>
+    </div>
+
+    <div class="icon-holder" *ngIf="role==='Admin'">
+        <img src="../../../assets/svg/house.svg" alt="Home Icon" class="icons-link" [routerLink]="['/home']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/mask.svg" alt="Heroes Icon" class="icons-link" [routerLink]="['/home/heroes']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/star.svg" alt="Power Icon" class="icons-link" [routerLink]="['/home/powers']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/villain.svg" alt="Villains Icon" class="icons-link" [routerLink]="['/home/villains']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" (click)="updateSharedService()" />
+        <img src="../../../assets/svg/placeholder_hero.svg" alt="Villains Icon" class="icons-link" [routerLink]="['/home/admin-map']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/logout.svg" alt="Logout icon" class="icons-link" (click)="logout()" id="log-out-icon" />
+    </div>
+
+    <div class="icon-holder" *ngIf="role==='Regular'">
+        <img src="../../../assets/svg/house.svg" alt="Home Icon" class="icons-link" [routerLink]="['/home']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/mask.svg" class="icons-link" routerLink="/home/user-details" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/star.svg" class="icons-link" routerLink="/home/chat" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" />
+        <img src="../../../assets/svg/logout.svg" alt="Logout icon" class="icons-link" (click)="logout()" id="log-out-icon" />
+    </div>
+</div>

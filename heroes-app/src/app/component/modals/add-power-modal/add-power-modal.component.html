@@ -1,0 +1,55 @@
+<div class="modal-header header-modal-container">
+  <h4 class="modal-title pull-left">New power</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="hero-container">
+    <div>
+      <div class="field-wrapper">
+        <label>Name</label><span class="required-field">*</span>
+      </div>
+      <input type="text" class="power-modal-input power-name" [(ngModel)]="power.name" required="true" />
+    </div>
+    <div>
+      <div class="field-wrapper">
+        <label>Trait</label><span class="required-field">*</span>
+      </div>
+      <input type="text" class="power-modal-input power-trait" [(ngModel)]="power.mainTrait" required="true" />
+    </div>
+    <div flexLayout="column">
+      <div fxFlex="70%">
+        <div class="field-wrapper">
+          <label>Strength</label><span class="required-field">*</span>
+        </div>
+      </div>
+      <input type="range" min="1" max="100" class="power-modal-input power-strength" [(ngModel)]="power.strength" />
+
+      <div fxFlex="30%" class="strength-range">Value: {{ power.strength }}</div>
+    </div>
+    <div>
+      <div class="field-wrapper">
+        <label>Element</label><span class="required-field">*</span>
+      </div>
+      <select (change)="getSelectedElement($event)" class="power-modal-dropdown" required="true">
+        <option class="select-hint">{{ elementSelectionHint }}</option>
+        <option *ngFor="let element of elements" value="{{ element.id }}">
+          {{ element.name }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <div class="field-wrapper">
+        <label>Details</label><span class="required-field">*</span>
+      </div>
+      <input type="text" class="power-modal-input power-details" [(ngModel)]="power.details" required="true" />
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default save-button-modal" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-default  cancel-button-modal" (click)="onCancel()">Cancel</button>
+</div>

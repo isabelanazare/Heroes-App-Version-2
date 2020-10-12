@@ -1,0 +1,6 @@
+<button *ngIf="checkTime();else noTrainingTemplate" type="button" class="btn btn-success" (click)="getSelectedId();trainPower()">Train</button>
+
+
+
+<ng-template #noTrainingTemplate>
+    <button type="button" class="btn-small btn-light" disabled>Training not available</button></ng-template>

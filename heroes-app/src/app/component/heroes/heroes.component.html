@@ -1,0 +1,29 @@
+<div class="container-title-buttons">
+  <div class="hero-power-title">Heroes</div>
+  <div class="btn-heroes-group">
+    <button type="button" class="btn-base add-btn" (click)="showModal(addModal)">
+      ADD
+    </button>
+    <button class="btn-base edit-btn" (click)="showEditModal(editModal)">
+      EDIT
+    </button>
+    <button type="button" class="btn-base export-btn" (click)="onExport(true)">
+      EXPORT
+    </button>
+  </div>
+</div>
+
+<ag-grid-angular class="ag-theme-alpine grid" [rowHeight]="rowHeight" [rowClassRules]="rowClassRules"
+  [frameworkComponents]="frameworkComponents" [rowData]="rowData" [columnDefs]="columnDefs"
+  (rowSelected)="onRowSelected($event)" (selectionChanged)="onSelectionChanged($event)"
+  (checkboxChanged)="onCheckboxChanged($event)" (gridReady)="onGridReady($event)" rowSelection="single">
+</ag-grid-angular>
+
+<ng-template #addModal>
+  <app-add-hero-modal (close)="closeModal($event)"></app-add-hero-modal>
+</ng-template>
+
+<ng-template #editModal>
+  <app-edit-hero-modal (close)="closeModal($event)" [selectedDataId]="selectedDataId"
+    [selectedDataName]="selectedDataName"></app-edit-hero-modal>
+</ng-template>

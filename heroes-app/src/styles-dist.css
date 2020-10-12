@@ -1,0 +1,21 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.sidenav-container {
+  background-color: rgb(10, 77, 153);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  height: 85vh;
+  text-align: center;
+}
+
+.chart-container {
+  border: 1px solid;
+  padding: 10px;
+  margin-right: 2vw;
+  margin-left: 2vw;
+  text-align: center;
+  background-color: khaki;
+}
+/*# sourceMappingURL=styles-dist.css.map */

@@ -1,0 +1,32 @@
+.profile-container {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-image {
+    height: 140px;
+    width: 150px;
+    margin-left: 65px;
+    object-fit: cover;
+}
+
+.change-password-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: blue;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.change-password-link:hover {
+    color: deepskyblue;
+}
+
+.modal-body {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+}
+

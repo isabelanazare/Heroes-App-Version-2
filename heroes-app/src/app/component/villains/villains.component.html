@@ -1,0 +1,28 @@
+<div *ngIf="isUpdateSelected===false">
+    <div class="villains-container">
+        <div class="hero-power-title">
+            Villains
+        </div>
+        <div class="villains-container__add-btn btn-heroes-group">
+            <button type="button" class="btn-base add-btn" (click)="showModal(addVillainModal)">ADD</button>
+            <button class="btn-base edit-btn" (click)="edit()">
+                EDIT
+            </button>
+        </div>
+    </div>
+</div>
+<ag-grid-angular *ngIf="isUpdateSelected===false" class="ag-theme-alpine grid" [rowSelection]="rowSelection"
+    [rowHeight]="rowHeight" [rowData]="rowData" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+    (rowSelected)="onRowSelected($event)" (rowDoubleClicked)="onRowDoubleClicked($event); updateCurrentVillainId()"
+    (selectionChanged)="onSelectionChanged($event)" (checkboxChanged)="onCheckboxChanged($event)"
+    (gridReady)="onGridReady($event)">
+</ag-grid-angular>
+
+
+<ng-template #addVillainModal>
+    <app-add-villain-modal (close)=" closeModal($event) "></app-add-villain-modal>
+</ng-template>
+
+<div *ngIf="isUpdateSelected===true">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,41 @@
+<nav ngbNav #nav="ngbNav" class="nav-tabs">
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Details</a>
+        <ng-template ngbNavContent>
+            <app-user-inputs [hero]="hero"></app-user-inputs>
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem [destroyOnHide]="true">
+        <a ngbNavLink>Powers</a>
+        <ng-template ngbNavContent>
+            <app-user-powers-table [hero]="hero"></app-user-powers-table>
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Locations</a>
+        <ng-template ngbNavContent>
+            <app-hero-map [hero]="hero"></app-hero-map>
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Calendar</a>
+        <ng-template ngbNavContent>
+            <app-detail-calendar [heroId]="hero.id" [hero]="hero"></app-detail-calendar>
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink>History</a>
+        <ng-template ngbNavContent>
+            <app-battle-history [hero]="hero"></app-battle-history>
+        </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+        <a ngbNavLink>Badges</a>
+        <ng-template ngbNavContent>
+            <app-hero-badges [hero]="hero"></app-hero-badges>
+        </ng-template>
+    </ng-container>
+
+</nav>
+
+<div [ngbNavOutlet]="nav " class="mt-2 "></div>

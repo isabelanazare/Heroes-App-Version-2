@@ -1,0 +1,21 @@
+<div class="button-container">
+    <button type="button" class="btn-base add-btn" (click)="showModal(addPowersModal)">
+      Add
+    </button>
+    <button type="button" class="btn-base btn-primary" (click)="showEditModal(editModal)">
+      Edit
+    </button>
+</div>
+
+<div class="grid-container">
+    <ag-grid-angular class="ag-theme-alpine grid " (rowSelected)="onRowSelected($event)" (selectionChanged)="onSelectionChanged($event)" [rowHeight]="rowHeight" [rowData]="rowData" [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents" rowSelection="single">
+    </ag-grid-angular>
+</div>
+
+<ng-template #addPowersModal>
+    <app-villain-add-powers [villainId]="villainId" (close)="closeModal($event)"></app-villain-add-powers>
+</ng-template>
+
+<ng-template #editModal>
+    <app-edit-heropower-modal (close)="closeModal($event)" [selectedDataId]="selectedDataId"></app-edit-heropower-modal>
+</ng-template>
