@@ -1,4 +1,4 @@
-# Heroes-App-Upgraded
+# Heroes-App-Version-2
 
 Me and my team, we had to upgrade someone else's heroes app, using Angular 10 and .NET Core 3.1. 
 
